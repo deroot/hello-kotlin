@@ -26,7 +26,7 @@ class BankController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping(value = ["/{id}"])
     fun getBankAccount(@PathVariable("id") id: Long): ResponseEntity<BankAccountResponse> {
         val bankAccountResponse = bankAccountService.getBankAccount(id) ?: return ResponseEntity(HttpStatus.BAD_REQUEST)
         return ResponseEntity.ok(bankAccountResponse)
