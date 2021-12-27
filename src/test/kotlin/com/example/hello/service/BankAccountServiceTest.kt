@@ -34,13 +34,13 @@ internal class BankAccountServiceTest {
 
         //given
         var bankAccountEntity = BankAccountEntity(null, "ING", "123ING456", "JOHN SMITH")
-        every { bankAccountRepository.findByIdOrNull(1) } returns bankAccountEntity;
+        every { bankAccountRepository.findByIdOrNull(1) } returns bankAccountEntity
 
         //when
         val result = bankAccountService.getBankAccount(1);
 
         //then
-        verify(exactly = 1) { bankAccountRepository.findByIdOrNull(1) };
+        verify(exactly = 1) { bankAccountRepository.findByIdOrNull(1) }
 
         val expected = mapper.convertToResponse(bankAccountEntity)
         assertEquals(expected, result)
