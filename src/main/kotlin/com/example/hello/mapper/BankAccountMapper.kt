@@ -3,10 +3,13 @@ package com.example.hello.mapper
 import com.example.hello.entity.BankAccountEntity
 import com.example.hello.model.BankAccountRequest
 import com.example.hello.model.BankAccountResponse
+import mu.KotlinLogging
 import org.mapstruct.*
 
 @Mapper
 abstract class BankAccountMapper {
+
+    private val logger = KotlinLogging.logger {}
 
     @BeanMapping(qualifiedByName = ["xxx"])
     @Mapping(source = "bankCode", target = "bankCode")
@@ -23,6 +26,7 @@ abstract class BankAccountMapper {
         bankAccountEntity: BankAccountEntity
     ) {
         // do something
+        logger.info("AfterMapping xxx")
     }
 
     @Named("yyy")
@@ -32,5 +36,6 @@ abstract class BankAccountMapper {
         bankAccountRequest: BankAccountRequest
     ) {
         // do something
+        logger.info("AfterMapping yyy")
     }
 }
